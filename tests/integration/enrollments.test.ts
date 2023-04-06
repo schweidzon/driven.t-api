@@ -135,6 +135,7 @@ describe('POST /enrollments', () => {
     it('should respond with status 400 when body is not valid', async () => {
       const token = await generateValidToken();
       const body = { [faker.lorem.word()]: faker.lorem.word() };
+
       const response = await server.post('/enrollments').set('Authorization', `Bearer ${token}`).send(body);
 
       expect(response.status).toBe(httpStatus.BAD_REQUEST);
