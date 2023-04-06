@@ -50,9 +50,9 @@ function JoiCepValidation(value: string, helpers: Joi.CustomHelpers<string>) {
 function joiMobilePhoneValidation(value: string, helpers: Joi.CustomHelpers<string>) {
   if (!value) return value;
 
-  // if (!isValidMobilePhone(value)) {
-  //   return helpers.error('any.invalid');
-  // }
+  if (!isValidMobilePhone(value)) {
+    return helpers.error('any.invalid');
+  }
 
   return value;
 }
