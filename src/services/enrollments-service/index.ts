@@ -41,13 +41,12 @@ async function createOrUpdateEnrollmentWithAddress(params: CreateOrUpdateEnrollm
   const address = getAddressForUpsert(params.address);
   try {
     const result = await getAddressFromCEP(address.cep);
-    //console.log(result)
-
-    if (result.status === 400) {
+    console.log(result.data.erro);
+    if (result.data.erro === true) {
       throw notFoundError();
     }
-    if (result.data.erro === 'true') {
-      console.log('oi');
+
+    if (result.status === 400) {
       throw notFoundError();
     }
   } catch {
